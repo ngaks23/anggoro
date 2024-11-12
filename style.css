@@ -1,0 +1,95 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+}
+
+#hearts-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Gaya hati */
+.heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transform: rotate(-45deg);
+    animation: float 5s linear infinite, changeColor 1s infinite;
+    opacity: 0.8;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -25px;
+    left: 0;
+}
+
+.heart::after {
+    left: 25px;
+    top: 0;
+}
+
+/* Animasi mengambang dan perubahan warna */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(-45deg);
+    }
+    100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+}
+
+@keyframes changeColor {
+    0% { background-color: red; }
+    25% { background-color: yellow; }
+    50% { background-color: green; }
+    75% { background-color: blue; }
+    100% { background-color: purple; }
+}
+/* Gaya teks LOVE YOU ALL */
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    animation: textColorChange 2s infinite;
+    z-index: 10; /* Pastikan teks berada di atas hati-hati */
+}
+
+@keyframes textColorChange {
+    0% { color: red; }
+    33% { color: yellow; }
+    66% { color: blue; }
+    100% { color: green; }
+}
